@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect Page</title>
+    <script>
+        window.onload = function() {
+            // Get the URL parameters
+            const params = new URLSearchParams(window.location.search);
+
+            // Check if the 'id' parameter is present
+            if (params.has('id')) {
+                // Get the 'id' parameter value
+                const id = params.get('id');
+
+                // Construct the redirect URL
+                const redirectUrl = `http://192.168.100.90/gafetes/empleados.php?mobile&id=${encodeURIComponent(id)}`;
+
+                // Redirect to the constructed URL
+                window.location.href = redirectUrl;
+            } else {
+                // Display an error message if 'id' parameter is missing
+                document.body.innerHTML = "Error: 'id' parameter is required.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- The content of this page will be replaced by the JavaScript redirection -->
+</body>
+</html>
