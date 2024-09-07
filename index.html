@@ -13,13 +13,13 @@
             if (params.has('id')) {
                 // Get the 'id' parameter value
                 const id = params.get('id');
+                let redirectUrl;
 
                 // Construct the redirect URL
-                if(id='41'){
-                    
-                const redirectUrl = `https://www.tiktok.com/@ramirez.op7/video/7360007699674746117`;
-                }else{
-                const redirectUrl = `http://192.168.100.90/gafetes/empleado.php?mobile&id=${encodeURIComponent(id)}`;
+                if (id === '41') {
+                    redirectUrl = `https://www.tiktok.com/@ramirez.op7/video/7360007699674746117`;
+                } else {
+                    redirectUrl = `http://192.168.100.90/gafetes/empleado.php?mobile&id=${encodeURIComponent(id)}`;
                 }
 
                 // Redirect to the constructed URL
