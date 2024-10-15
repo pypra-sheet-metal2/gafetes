@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
+    <title>Fullscreen Spreadsheet</title>
     <style>
         html, body {
             margin: 0;
@@ -21,15 +21,40 @@
             height: 100%;
             border: none;
         }
+
+        #fullscreenButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRZmtDWmj53vjUF_ImKhoNpFKwolnccSLp-j8gpCly-kdXFOnANOjlaxu4vxORarp-IswRinblTzpma/pubhtml?gid=1659755827&single=true" allowfullscreen></iframe>
+
+    <button id="fullscreenButton">FS</button>
+
+    <iframe id="spreadsheetFrame" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRZmtDWmj53vjUF_ImKhoNpFKwolnccSLp-j8gpCly-kdXFOnANOjlaxu4vxORarp-IswRinblTzpma/pubhtml?gid=1659755827&single=true"></iframe>
 
     <script>
-        window.onload = function() {
-            document.querySelector('iframe').requestFullscreen();
-        };
+        document.getElementById('fullscreenButton').addEventListener('click', function() {
+            var iframe = document.getElementById('spreadsheetFrame');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) { // Firefox
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { // IE/Edge
+                iframe.msRequestFullscreen();
+            }
+        });
     </script>
+    
 </body>
 </html>
